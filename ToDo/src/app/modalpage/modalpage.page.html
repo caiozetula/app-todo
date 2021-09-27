@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="fechar()">Fechar</ion-button>
+    </ion-buttons>
+    <ion-title>Adicionar Tarefa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Tarefa: </ion-label>
+      <ion-input type="text" placeholder="Alguma tarefa..." [(ngModel)]="newTask"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Para hoje?</ion-label>
+      <ion-checkbox color="tertiary" [(ngModel)]="hoje"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block" color="secondary" (click)="adicionar()">Adicionar</ion-button>
+</ion-content>
