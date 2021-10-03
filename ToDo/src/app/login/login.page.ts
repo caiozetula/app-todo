@@ -14,7 +14,9 @@ export class LoginPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private afAuth: AngularFireAuth,
-    private utilCtrl: UtilService) { }
+    private utilCtrl: UtilService) { 
+      localStorage.setItem('user', '');
+    }
 
   ngOnInit() {
   }
@@ -23,11 +25,13 @@ export class LoginPage implements OnInit {
     this.afAuth.signInWithEmailAndPassword(user.email, user.password)
       .then((userCredential) => {
         const user = userCredential.user;
+        const usr: any = user.toJSON();
+        let email = JSON.stringify(usr.email);
+        localStorage.setItem('user', email);
         this.navCtrl.navigateForward('home');
       })
       .catch((e) => {
         const errorCode: string = e.code;
-        const errorMessage: string = e.message;
         if(errorCode.includes("missing-email")){
           this.utilCtrl.showToast("Insira seu e-mail e senha");
         }else if(errorCode.includes("wrong-password")){
