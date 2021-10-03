@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <!-- <ion-list>
     <ion-item>
       <ion-label position="floating">Tarefa: </ion-label>
       <ion-input type="text" placeholder="Alguma tarefa..." [(ngModel)]="newTask"></ion-input>
@@ -18,5 +18,19 @@
       <ion-checkbox color="tertiary" [(ngModel)]="hoje"></ion-checkbox>
     </ion-item>
   </ion-list>
-  <ion-button expand="block" color="secondary" (click)="adicionar()">Adicionar</ion-button>
+  <ion-button expand="block" color="secondary" (click)="adicionar()">Adicionar</ion-button> -->
+
+  <form [formGroup]="taskForm" (ngSubmit)="formSubmit()">
+    <ion-item>
+      <ion-label position="floating">Tarefa</ion-label>
+      <ion-input formControlName="task" type="text" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="secondary" expand="block">Adicionar</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>
